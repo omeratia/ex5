@@ -51,7 +51,7 @@ int main() {
     int *pNumOfPlaylists = &numOfPlaylists;
     Playlist *playlists = (Playlist*)calloc(0,sizeof(Playlist));
 
-    int choice, active = 1;
+    int choice = 1;
     
     do
     {
@@ -74,6 +74,7 @@ int main() {
                 break;
             case 4:
                 deleteAll(pNumOfPlaylists,&playlists);
+                printf("Goodbye!\n");
                 return 1;
             default:
                 break;
@@ -86,9 +87,7 @@ int main() {
 
     } while (choice != 4);
 
-    
 
-    
     printf("Goodbye!\n");  
 }
 
@@ -172,10 +171,10 @@ void watchPlaylists(int *numOfPlaylists, Playlist **playlists){
         if (chosenPlaylist == *numOfPlaylists+1){
             return;
         }
+        printf("playlist %s:\n",(*playlists)[chosenPlaylist-1].name);//
         int playlistIsActive =1;
         while (playlistIsActive){
             int playlistInteraction;
-            printf("playlist %s:\n",(*playlists)[chosenPlaylist-1].name);
             printPlaylistOptions();
             scanf("%d",&playlistInteraction);
             while (playlistInteraction<1 || playlistInteraction > 6){
@@ -214,8 +213,8 @@ void printPlaylistOptions(){
     printf("\t2. Add Song\n");
     printf("\t3. Delete Song\n");
     printf("\t4. Sort\n");
-    printf("\t5.Play\n");
-    printf("\t6.exit\n");
+    printf("\t5. Play\n");
+    printf("\t6. exit\n");
 }
 
 void displayPlaylist(int playlistIndex, Playlist *playlists){
@@ -229,7 +228,7 @@ void displayPlaylist(int playlistIndex, Playlist *playlists){
     }
     int activeStreaming = 1;
     while (activeStreaming){
-        printf("Choose a song to play, or 0 to quit:\n");
+        printf("choose a song to play, or 0 to quit:\n");
         int songToPlay;
         scanf("%d",&songToPlay);
         if (songToPlay==0){
@@ -395,7 +394,7 @@ void songsSwapping(Song** first, Song** second){
 }
 
 void deleteSong(int playlistIndex, Playlist *playlists){
-    int numOfSongs = playlists[playlistIndex-1].songsNum;
+    // int numOfSongs = playlists[playlistIndex-1].songsNum;
     Playlist *currentPlaylist = &playlists[playlistIndex-1];
 
     printf("choose a song to delete, or 0 to quit:\n");
@@ -444,6 +443,9 @@ void deletePlaylist(int *pNumOfPlaylists, Playlist **playlists){
     printf("\t%d. Back to main menu\n", *pNumOfPlaylists+1);
     int chosenPlaylist;
     scanf("%d",&chosenPlaylist);
+    if (*pNumOfPlaylists == 1 && chosenPlaylist == 1){
+        return;
+    }
     while (chosenPlaylist<=0 || chosenPlaylist>*pNumOfPlaylists)
     {
         printf("Invalid option\n");
@@ -451,7 +453,7 @@ void deletePlaylist(int *pNumOfPlaylists, Playlist **playlists){
         scanf("%d",&chosenPlaylist);
     }
     if (chosenPlaylist == *pNumOfPlaylists+1) return;
-    Playlist *playlistToDelete = &(*playlists[chosenPlaylist-1]);
+    // Playlist *playlistToDelete = &(*playlists[chosenPlaylist-1]);
     freePlaylist(chosenPlaylist,*playlists);
     (*pNumOfPlaylists)--; //decreasing number of playlists
     chosenPlaylist--; //adjust to array indexing
