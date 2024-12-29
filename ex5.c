@@ -396,7 +396,13 @@ void songsSwapping(Song** first, Song** second){
 void deleteSong(int playlistIndex, Playlist *playlists){
     // int numOfSongs = playlists[playlistIndex-1].songsNum;
     Playlist *currentPlaylist = &playlists[playlistIndex-1];
-
+    int numOfSongs = currentPlaylist->songsNum;
+    for (int i=0;i<numOfSongs;i++){
+        printf("%d.  Title: %s\n",i+1,currentPlaylist->songs[i]->title);
+        printf("    Artist: %s\n",currentPlaylist->songs[i]->artist);
+        printf("    Released: %d\n",currentPlaylist->songs[i]->year);
+        printf("    Streams: %d\n",currentPlaylist->songs[i]->streams);
+    }
     printf("choose a song to delete, or 0 to quit:\n");
     int deleteChoice;
     scanf("%d",&deleteChoice);
@@ -443,7 +449,7 @@ void deletePlaylist(int *pNumOfPlaylists, Playlist **playlists){
     printf("\t%d. Back to main menu\n", *pNumOfPlaylists+1);
     int chosenPlaylist;
     scanf("%d",&chosenPlaylist);
-    if (*pNumOfPlaylists == 1 && chosenPlaylist == 1){
+    if (*pNumOfPlaylists == 0 && chosenPlaylist == 1){
         return;
     }
     while (chosenPlaylist<=0 || chosenPlaylist>*pNumOfPlaylists)
