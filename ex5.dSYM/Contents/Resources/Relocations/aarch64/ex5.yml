@@ -1,0 +1,15 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/omeratia/Desktop/CS/ex/ex5/ex5'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000032A4, symSize: 0xFC }
+  - { offsetInCU: 0xE4, offset: 0xE4, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000032A4, symSize: 0xFC }
+  - { offsetInCU: 0x144, offset: 0x144, size: 0x8, addend: 0x0, symName: _watchPlaylists, symObjAddr: 0xFC, symBinAddr: 0x1000033A0, symSize: 0x2AC }
+  - { offsetInCU: 0x1AE, offset: 0x1AE, size: 0x8, addend: 0x0, symName: _addPlaylist, symObjAddr: 0x3A8, symBinAddr: 0x10000364C, symSize: 0x154 }
+  - { offsetInCU: 0x1E0, offset: 0x1E0, size: 0x8, addend: 0x0, symName: _printPlaylistsMenu, symObjAddr: 0x4FC, symBinAddr: 0x1000037A0, symSize: 0x28 }
+  - { offsetInCU: 0x1F5, offset: 0x1F5, size: 0x8, addend: 0x0, symName: _sortPlaylist, symObjAddr: 0x524, symBinAddr: 0x1000037C8, symSize: 0x1C }
+  - { offsetInCU: 0x20A, offset: 0x20A, size: 0x8, addend: 0x0, symName: _stringToPointer, symObjAddr: 0x540, symBinAddr: 0x1000037E4, symSize: 0x184 }
+  - { offsetInCU: 0x24E, offset: 0x24E, size: 0x8, addend: 0x0, symName: _displayPlaylist, symObjAddr: 0x6C4, symBinAddr: 0x100003968, symSize: 0xB8 }
+  - { offsetInCU: 0x28E, offset: 0x28E, size: 0x8, addend: 0x0, symName: _addSong, symObjAddr: 0x77C, symBinAddr: 0x100003A20, symSize: 0x2A0 }
+  - { offsetInCU: 0x2DC, offset: 0x2DC, size: 0x8, addend: 0x0, symName: _printPlaylistOptions, symObjAddr: 0xA1C, symBinAddr: 0x100003CC0, symSize: 0x58 }
+...
