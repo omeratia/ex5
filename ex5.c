@@ -147,15 +147,26 @@ char *stringToPointer(){
         //char pointer
         stringPointer = (char*)realloc(stringPointer, (counter+1)* sizeof(char));
         if (!stringPointer){
+            //exiting if allocation failed
         printf("DMA failed\n");
-        return 0;
+        exit(1);
     }
         stringPointer[counter] = currentChar;
+        //adding the current char to the new allocted char 
         counter++;
     }
-    stringPointer = (char*)realloc(stringPointer, (counter + 1) * sizeof(char));
-    stringPointer[counter] = '\0';
-    return stringPointer;
+    if (stringPointer[counter-1] == '\r'){
+        //checking for a space as the last char. if so we can replace it with the \0 so 
+        //there wont be an unneccessary space after the string characters
+        stringPointer[counter-1] = '\0';
+        return stringPointer;
+    }
+    else {
+        //adding another char memory space for the \0 to finish the string
+        stringPointer = (char*)realloc(stringPointer, (counter + 1) * sizeof(char));
+        stringPointer[counter] = '\0';
+        return stringPointer;
+    }
 }
 
 void watchPlaylists(int *numOfPlaylists, Playlist **playlists){
